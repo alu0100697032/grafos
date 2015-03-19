@@ -35,6 +35,7 @@ GRAFO::GRAFO(char nombrefichero[85]) {
 		cout << "¡Fichero cargado correctamente!" << endl;
 	} else {
 		cout << "¡Error en la apertura del fichero!" << endl;
+		exit(0);
 	}
 
 }
@@ -72,6 +73,7 @@ void GRAFO::actualizar(char nombrefichero[85]) {
 		cout << "¡Grafo actualizado correctamente!" << endl;
 	} else {
 		cout << "¡Error en la apertura del fichero!" << endl;
+		exit(0);
 	}
 }
 

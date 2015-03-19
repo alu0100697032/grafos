@@ -24,16 +24,18 @@ int main() {
 	GRAFO grafo(fichero);
 	char opcion;
 	bool parar = false;
-	if (grafo.Es_dirigido() == 1) {
-		cout << "MENU DE OPCIONES:" << endl;
-		cout << "------------------------------------------------" << endl;
-		cout << "| [c] Cargar un nuevo grafo:                   |" << endl;
-		cout << "| [i] Mostrar la información básica del grafo: |" << endl;
-		cout << "| [s] Mostrar la lista de sucesores            |" << endl;
-		cout << "| [p] Mostrar la lista de predecesores         |" << endl;
-		cout << "| [q] Salir del programa                       |" << endl;
-		cout << "------------------------------------------------" << endl;
-		while (parar == false) {
+	while (parar == false) {
+		if (grafo.Es_dirigido() == 1) {
+			cout << endl;
+			cout << "MENU DE OPCIONES:" << endl;
+			cout << "------------------------------------------------" << endl;
+			cout << "| [c] Cargar un nuevo grafo:                   |" << endl;
+			cout << "| [i] Mostrar la información básica del grafo: |" << endl;
+			cout << "| [s] Mostrar la lista de sucesores            |" << endl;
+			cout << "| [p] Mostrar la lista de predecesores         |" << endl;
+			cout << "| [q] Salir del programa                       |" << endl;
+			cout << "------------------------------------------------" << endl;
+			cout << endl;
 			cin >> opcion;
 			switch (opcion) {
 			case 'c': {
@@ -54,38 +56,28 @@ int main() {
 			}
 				break;
 			case 'q': {
+				cout << endl;
+				cout << "Programa cerrado" << endl;
 				parar = true;
 			}
 				break;
 			default: {
-				cout << "MENU DE OPCIONES:" << endl;
-				cout << "------------------------------------------------"
-						<< endl;
-				cout << "| [c] Cargar un nuevo grafo:                   |"
-						<< endl;
-				cout << "| [i] Mostrar la información básica del grafo: |"
-						<< endl;
-				cout << "| [s] Mostrar la lista de sucesores            |"
-						<< endl;
-				cout << "| [p] Mostrar la lista de predecesores         |"
-						<< endl;
-				cout << "| [q] Salir del programa                       |"
-						<< endl;
-				cout << "------------------------------------------------"
+				cout << endl;
+				cout << "¡Seleccione una de las opciones especificadas!"
 						<< endl;
 			}
 				break;
 			} //END SWITCH
-		} //END WHILE
-	} else {
-		cout << "MENU DE OPCIONES:" << endl;
-		cout << "------------------------------------------------" << endl;
-		cout << "| [c] Cargar un nuevo grafo:                   |" << endl;
-		cout << "| [i] Mostrar la información básica del grafo: |" << endl;
-		cout << "| [s] Mostrar la lista de sucesores            |" << endl;
-		cout << "| [a] Mostrar la lista de adyacentes           |" << endl;
-		cout << "------------------------------------------------" << endl;
-		while (parar == false) {
+		} else {
+			cout << endl;
+			cout << "MENU DE OPCIONES:" << endl;
+			cout << "------------------------------------------------" << endl;
+			cout << "| [c] Cargar un nuevo grafo:                   |" << endl;
+			cout << "| [i] Mostrar la información básica del grafo: |" << endl;
+			cout << "| [a] Mostrar la lista de adyacentes           |" << endl;
+			cout << "| [q] Salir del programa                       |" << endl;
+			cout << "------------------------------------------------" << endl;
+			cout << endl;
 			cin >> opcion;
 			switch (opcion) {
 			case 'c': {
@@ -102,28 +94,19 @@ int main() {
 			}
 				break;
 			case 'q': {
+				cout << endl;
+				cout << "Programa cerrado" << endl;
 				parar = true;
 			}
 				break;
 			default: {
-				cout << "MENU DE OPCIONES:" << endl;
-				cout << "------------------------------------------------"
-						<< endl;
-				cout << "| [c] Cargar un nuevo grafo:                   |"
-						<< endl;
-				cout << "| [i] Mostrar la información básica del grafo: |"
-						<< endl;
-				cout << "| [s] Mostrar la lista de sucesores            |"
-						<< endl;
-				cout << "| [a] Mostrar la lista de adyacentes           |"
-						<< endl;
-				cout << "------------------------------------------------"
+				cout << endl;
+				cout << "¡Seleccione una de las opciones especificadas!"
 						<< endl;
 			}
 				break;
 			} //END SWITCH
-		} //END WHILE
-	}
+		}
+	} //END WHILE
 	return 0;
 }
-
