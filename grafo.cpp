@@ -9,7 +9,7 @@
 #include "grafo.h"
 
 //CONSTRUCTOR
-GRAFO::GRAFO(char nombrefichero[85], int &errorapertura) {
+GRAFO::GRAFO(char nombrefichero[85]) {
 	ElementoLista dummy;
 	ifstream textfile;
 	textfile.open(nombrefichero);
@@ -23,21 +23,25 @@ GRAFO::GRAFO(char nombrefichero[85], int &errorapertura) {
 		LSucesores.resize(numero_nodos);
 		// leemos los m arcos y cramos las listas de sucesores LS
 		for (k = 0; k < numero_arcos; k++) {
-
+			textfile >> i;
+			textfile >> j;
+			dummy.nodo = j-1;
+			LSucesores[i-1].push_back(dummy);
 		}
 		textfile.close();
 		if (Es_dirigido() == 1) {
 			ListaPredecesores();
 		};
-		errorapertura = 0;
+		cout << "¡Fichero cargado correctamente!" << endl;
 	} else {
-		errorapertura = 1;
+		cout << "¡Error en la apertura del fichero!" << endl;
 	}
 
 }
 //DESTRUCTOR
 GRAFO::~GRAFO() {
-
+	LPredecesores.clear();
+	LSucesores.clear();
 }
 
 void GRAFO::actualizar(char nombrefichero[85], int &errorapertura) {
@@ -63,6 +67,14 @@ void GRAFO::Mostrar_Listas(int l) {
 ;
 
 void GRAFO::ListaPredecesores() {
+	/*unsigned i, j , k;
+	LPredecesores.resize(numero_nodos);
+	for (int i = 0; i < numero_nodos; i++){
+		for (int j = 0; i < numero_nodos; j++){
+			for (int k = 0; i < numero_nodos; k++){
 
+				}
+			}
+	}*/
 }
 
