@@ -69,7 +69,7 @@ void GRAFO::actualizar(char nombrefichero[85]) {
 		if (Es_dirigido() == 1) {
 			ListaPredecesores();
 		};
-		cout << "¡Fichero cargado correctamente!" << endl;
+		cout << "¡Grafo actualizado correctamente!" << endl;
 	} else {
 		cout << "¡Error en la apertura del fichero!" << endl;
 	}
