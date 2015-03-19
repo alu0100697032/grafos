@@ -31,7 +31,14 @@ GRAFO::GRAFO(char nombrefichero[85]) {
 		textfile.close();
 		if (Es_dirigido() == 1) {
 			ListaPredecesores();
-		};
+		}else{
+			for(i = 0; i < LSucesores.size(); i++){
+				for(j = 0; j < LSucesores[i].size(); j++){
+					dummy.nodo = i;
+					LSucesores[LSucesores[i][j].nodo].push_back(dummy);
+				}
+			}
+		}
 		cout << "¡Fichero cargado correctamente!" << endl;
 	} else {
 		cout << "¡Error en la apertura del fichero!" << endl;
@@ -67,9 +74,16 @@ void GRAFO::actualizar(char nombrefichero[85]) {
 			LSucesores[i - 1].push_back(dummy);
 		}
 		textfile.close();
-		if (Es_dirigido() == 1) {
+		if (Es_dirigido() == 1) {//si es dirigido construir lista de sucesores
 			ListaPredecesores();
-		};
+		}else{
+			for(i = 0; i < LSucesores.size(); i++){
+				for(j = 0; j < LSucesores[i].size(); j++){
+					dummy.nodo = i;
+					LSucesores[LSucesores[i][j].nodo].push_back(dummy);
+				}
+			}
+		}
 		cout << "¡Grafo actualizado correctamente!" << endl;
 	} else {
 		cout << "¡Error en la apertura del fichero!" << endl;
