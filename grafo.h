@@ -39,10 +39,12 @@ class GRAFO {
 	vector<LA_nodo> LPredecesores; // Lista de adyacencia de los predecesores: es una matriz donde cada fila posiblemente es posiblemente de distinto tamaño//
 public:
 	GRAFO(char nombrefichero[]);
-	void actualizar(char nombrefichero[], int &errorapertura);
+	void actualizar(char nombrefichero[]);
 	unsigned Es_dirigido(); //devuelve 0 si el grafo es no dirigido y 1 si es dirigido
 	void Info_Grafo();
 	void Mostrar_Listas(int l);
+	void Mostrar_Lista_Sucesores();
+	void Mostrar_Lista_Predecesores();
 	void ListaPredecesores();
 	~GRAFO();
 };
