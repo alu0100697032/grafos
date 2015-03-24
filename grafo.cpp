@@ -32,8 +32,9 @@ GRAFO::GRAFO(char nombrefichero[85]) {
 		if (Es_dirigido() == 1) {
 			ListaPredecesores();
 		}else{
-			for(i = 0; i < LSucesores.size(); i++){
-				for(j = 0; j < LSucesores[i].size(); j++){
+			vector<LA_nodo> aux = LSucesores;
+			for(i = 0; i < aux.size(); i++){
+				for(j = 0; j < aux[i].size(); j++){
 					dummy.nodo = i;
 					LSucesores[LSucesores[i][j].nodo].push_back(dummy);
 				}
