@@ -2,8 +2,8 @@
  *  GRAFO.CPP - Implementaci√≥n de la clase GRAFOS
  *
  *
- *  Autor : 
- *  Fecha : 
+ *  Created on: 19/03/2015
+ *  Author: Victor
  */
 
 #include "grafo.h"
@@ -29,9 +29,9 @@ GRAFO::GRAFO(char nombrefichero[85]) {
 			LSucesores[i - 1].push_back(dummy);
 		}
 		textfile.close();
-		if (Es_dirigido() == 1) {
+		if (Es_dirigido() == 1) { //Si es dirigido creamos la lista de predecesores
 			ListaPredecesores();
-		}else{
+		}else{ // si no, recorremos la lista de sucesores para unir bien los nodos
 			vector<LA_nodo> aux = LSucesores;
 			for(i = 0; i < aux.size(); i++){
 				for(j = 0; j < aux[i].size(); j++){
@@ -40,9 +40,9 @@ GRAFO::GRAFO(char nombrefichero[85]) {
 				}
 			}
 		}
-		cout << "°Fichero cargado correctamente!" << endl;
+		cout << "¬°Fichero cargado correctamente!" << endl;
 	} else {
-		cout << "°Error en la apertura del fichero!" << endl;
+		cout << "¬°Error en la apertura del fichero!" << endl;
 		exit(0);
 	}
 
@@ -52,8 +52,11 @@ GRAFO::~GRAFO() {
 	LPredecesores.clear();
 	LSucesores.clear();
 }
-
+/*
+ * CARGA UN NUEVO GRAFO
+ */
 void GRAFO::actualizar(char nombrefichero[85]) {
+	//borramos la informacion de los vectores
 	LPredecesores.clear();
 	LSucesores.clear();
 	ElementoLista dummy;
@@ -75,9 +78,9 @@ void GRAFO::actualizar(char nombrefichero[85]) {
 			LSucesores[i - 1].push_back(dummy);
 		}
 		textfile.close();
-		if (Es_dirigido() == 1) {//si es dirigido construir lista de sucesores
+		if (Es_dirigido() == 1) {//si es dirigido construir lista de predecesores
 			ListaPredecesores();
-		}else{
+		}else{// si no, recorremos la lista de sucesores para unir bien los nodos
 			for(i = 0; i < LSucesores.size(); i++){
 				for(j = 0; j < LSucesores[i].size(); j++){
 					dummy.nodo = i;
@@ -85,17 +88,33 @@ void GRAFO::actualizar(char nombrefichero[85]) {
 				}
 			}
 		}
-		cout << "°Grafo actualizado correctamente!" << endl;
+		cout << "¬°Grafo actualizado correctamente!" << endl;
 	} else {
-		cout << "°Error en la apertura del fichero!" << endl;
+		cout << "¬°Error en la apertura del fichero!" << endl;
 		exit(0);
 	}
 }
-
+/*
+ * CONSTRUYE LA LISTA DE PREDECESORES
+ */
+void GRAFO::ListaPredecesores() {
+	unsigned j, k;
+	ElementoLista dummy;
+	LPredecesores.resize(numero_nodos);
+	for (j = 0; j < LPredecesores.size(); j++) {
+		for (k = 0; k < LSucesores[j].size(); k++) {
+			dummy.nodo = j;
+			LPredecesores[LSucesores[j][k].nodo].push_back(dummy);
+		}
+	}
+}
+/*
+ * MUESTRA LA INFORMACION DEL GRAFO
+ */
 void GRAFO::Info_Grafo() {
-	cout << "InformaciÛn del grafo:" << endl;
-	cout << "N˙mero de nodos: " << numero_nodos << endl;
-	cout << "N˙merod de arcos:" << numero_arcos << endl;
+	cout << "Informacion del grafo:" << endl;
+	cout << "Numero de nodos: " << numero_nodos << endl;
+	cout << "Numerod de arcos:" << numero_arcos << endl;
 	if (Es_dirigido() == 1)
 		cout << "Grafo dirigido" << endl;
 	else
@@ -105,7 +124,9 @@ void GRAFO::Info_Grafo() {
 unsigned GRAFO::Es_dirigido() {
 	return dirigido;
 }
-
+/*
+ * MUESTRA LAS LISTAS FORMATEADAS
+ */
 void GRAFO::Mostrar_Lista_Sucesores() {
 	unsigned i, j;
 	for (i = 0; i < LSucesores.size(); i++) {
@@ -135,24 +156,14 @@ void GRAFO::Mostrar_Lista_Predecesores() {
 		}
 	}
 }
-void GRAFO::Mostrar_Listas(int l) {
+/*void GRAFO::Mostrar_Listas(int l) {
 	if (l == 0) {
 		Mostrar_Lista_Sucesores();
 	} else {
 		Mostrar_Lista_Sucesores();
 		Mostrar_Lista_Predecesores();
 	}
-}
+}*/
 
-void GRAFO::ListaPredecesores() {
-	unsigned j, k;
-	ElementoLista dummy;
-	LPredecesores.resize(numero_nodos);
-	for (j = 0; j < LPredecesores.size(); j++) {
-		for (k = 0; k < LSucesores[j].size(); k++) {
-			dummy.nodo = j;
-			LPredecesores[LSucesores[j][k].nodo].push_back(dummy);
-		}
-	}
-}
+
 

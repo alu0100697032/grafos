@@ -1,8 +1,8 @@
 ﻿/*
  *  GRAFO.h - definicion de la clase GRAFO
  *
- *  Autor : Antonio Sedeno Noda, Sergio Alonso
- *  Curso 2012-2013
+ *  Created on: 19/03/2015
+ *  Author: Victor
  */
 
 #ifndef _GRAPH_H
@@ -43,7 +43,7 @@ public:
 	void actualizar(char nombrefichero[]);
 	unsigned Es_dirigido(); //devuelve 0 si el grafo es no dirigido y 1 si es dirigido
 	void Info_Grafo();
-	void Mostrar_Listas(int l);
+	//void Mostrar_Listas(int l);
 	void Mostrar_Lista_Sucesores();
 	void Mostrar_Lista_Predecesores();
 	void ListaPredecesores();
